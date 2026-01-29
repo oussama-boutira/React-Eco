@@ -1,77 +1,413 @@
 .tracking-page {
-  max-width: 850px;
-  margin-top: 90px;
-  margin-bottom: 100px;
-  padding-left: 30px;
-  padding-right: 30px;
-
-  margin-left: auto;
-  margin-right: auto;
+  background-color: #f8f9fa;
+  min-height: 100vh;
+  padding-top: 80px;
+  padding-bottom: 60px;
 }
 
-.tracking-page .back-to-orders-link {
+.tracking-container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.back-to-orders-link {
   display: inline-block;
+  margin-bottom: 25px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.back-to-orders-link:hover {
+  text-decoration: underline;
+}
+
+/* No Tracking Found */
+.no-tracking {
+  background: white;
+  border-radius: 12px;
+  padding: 60px 40px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.no-tracking-icon {
+  font-size: 60px;
+  margin-bottom: 20px;
+}
+
+.no-tracking h2 {
+  margin: 0 0 10px;
+  color: #333;
+}
+
+.no-tracking p {
+  color: #666;
+  margin-bottom: 25px;
+}
+
+.back-button {
+  display: inline-block;
+  padding: 12px 30px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+/* Tracking Header */
+.tracking-header {
+  background: linear-gradient(135deg, rgb(8, 79, 45) 0%, rgb(25, 135, 84) 100%);
+  border-radius: 12px;
+  padding: 30px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+  box-shadow: 0 4px 15px rgba(8, 79, 45, 0.3);
+}
+
+.tracking-title {
+  margin: 0 0 8px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.order-id {
+  margin: 0;
+  opacity: 0.9;
+  font-size: 14px;
+}
+
+.order-date {
+  margin: 5px 0 0;
+  opacity: 0.8;
+  font-size: 13px;
+}
+
+.order-total-badge {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 10px;
+  padding: 15px 25px;
+  text-align: center;
+  backdrop-filter: blur(5px);
+}
+
+.total-label {
+  display: block;
+  font-size: 12px;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.total-amount {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+/* Tracking Progress Section */
+.tracking-progress-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.estimated-delivery {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+  padding: 20px;
+  border-radius: 10px;
   margin-bottom: 30px;
 }
 
-.tracking-page .delivery-date {
-  font-size: 25px;
-  font-weight: 700;
-  margin-bottom: 10px;
+.delivery-icon {
+  font-size: 32px;
 }
 
-.tracking-page .product-info {
+.delivery-label {
+  display: block;
+  font-size: 13px;
+  color: #666;
   margin-bottom: 3px;
 }
 
-.tracking-page .product-image {
-  max-width: 150px;
-  max-height: 150px;
-  margin-top: 25px;
-  margin-bottom: 50px;
-}
-
-.tracking-page .progress-labels-container {
-  display: flex;
-  justify-content: space-between;
-  font-size: 20px;
-  font-weight: 500;
-  margin-bottom: 15px;
-}
-
-.tracking-page .current-status {
+.delivery-date {
+  font-size: 18px;
+  font-weight: 700;
   color: rgb(25, 135, 84);
 }
 
-@media (max-width: 575px) {
-  .tracking-page .progress-labels-container {
-    font-size: 16px;
+/* Tracking Steps */
+.tracking-steps {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.tracking-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #e0e0e0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  margin-bottom: 10px;
+  transition: all 0.3s ease;
+}
+
+.tracking-step.completed .step-icon {
+  background: rgb(25, 135, 84);
+  color: white;
+}
+
+.tracking-step.current .step-icon {
+  background: rgb(25, 135, 84);
+  color: white;
+  box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.2);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 4px rgba(25, 135, 84, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(25, 135, 84, 0.1);
+  }
+}
+
+.step-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  text-align: center;
+}
+
+.tracking-step.completed .step-label,
+.tracking-step.current .step-label {
+  color: rgb(25, 135, 84);
+  font-weight: 600;
+}
+
+.step-connector {
+  position: absolute;
+  top: 25px;
+  left: calc(50% + 25px);
+  width: calc(100% - 50px);
+  height: 3px;
+  background: #e0e0e0;
+  z-index: 0;
+}
+
+.step-connector.completed {
+  background: rgb(25, 135, 84);
+}
+
+/* Progress Bar */
+.progress-bar-container {
+  height: 8px;
+  background: #e0e0e0;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.progress-bar {
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgb(25, 135, 84) 0%,
+    rgb(46, 204, 113) 100%
+  );
+  border-radius: 10px;
+  transition: width 0.5s ease;
+}
+
+.tracking-status-message {
+  text-align: center;
+  padding: 15px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.tracking-status-message p {
+  margin: 0;
+  font-size: 15px;
+  color: #555;
+}
+
+/* Products Section */
+.tracking-products-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 25px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.section-title {
+  margin: 0 0 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #333;
+}
+
+.tracking-products-grid {
+  display: grid;
+  gap: 15px;
+}
+
+.tracking-product-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.tracking-product-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.product-image-wrapper {
+  width: 100px;
+  height: 100px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.tracking-product-image {
+  max-width: 80px;
+  max-height: 80px;
+  object-fit: contain;
+}
+
+.tracking-product-details {
+  flex: 1;
+}
+
+.tracking-product-name {
+  margin: 0 0 8px;
+  font-size: 15px;
+  font-weight: 600;
+  color: #333;
+}
+
+.tracking-product-quantity {
+  margin: 0 0 10px;
+  font-size: 14px;
+  color: #666;
+}
+
+.delivery-badge {
+  display: inline-block;
+  padding: 5px 12px;
+  background: linear-gradient(
+    135deg,
+    rgb(25, 135, 84) 0%,
+    rgb(46, 204, 113) 100%
+  );
+  color: white;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* Shipping Info Section */
+.shipping-info-section {
+  background: white;
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.shipping-card {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 10px;
+}
+
+.shipping-icon {
+  font-size: 30px;
+}
+
+.shipping-name {
+  margin: 0 0 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.shipping-address {
+  margin: 0;
+  font-size: 14px;
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tracking-header {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .order-total-badge {
+    width: 100%;
+  }
+
+  .tracking-steps {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+
+  .tracking-step {
+    flex: 0 0 calc(50% - 10px);
+  }
+
+  .step-connector {
+    display: none;
+  }
+
+  .tracking-product-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
 
 @media (max-width: 450px) {
-  .tracking-page .progress-labels-container {
-    flex-direction: column;
-    margin-bottom: 5px;
+  .tracking-title {
+    font-size: 22px;
   }
 
-  .tracking-page .progress-label {
-    margin-bottom: 3px;
+  .tracking-step {
+    flex: 0 0 100%;
   }
-}
-
-.tracking-page .progress-bar-container {
-  height: 25px;
-  width: 100%;
-
-  border: 1px solid rgb(200, 200, 200);
-  border-radius: 50px;
-  overflow: hidden;
-}
-
-.tracking-page .progress-bar {
-  height: 100%;
-  background-color: rgb(25, 135, 84);
-  border-radius: 50px;
-  transition: width 0.5s ease;
 }

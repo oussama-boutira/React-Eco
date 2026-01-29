@@ -1,13 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useOrders } from "../../context/OrdersContext";
 import {
   getProduct,
   formatCurrency,
   deliveryOptions,
+  products,
 } from "../../data/products";
 import "./PaymentSummary.css";
 
 function PaymentSummary() {
-  const { cart } = useCart();
+  const { cart, clearCart } = useCart();
+  const { addOrder } = useOrders();
+  const navigate = useNavigate();
 
   // Calculate totals
   let productPriceCents = 0;
@@ -33,7 +38,14 @@ function PaymentSummary() {
   const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
 
   function handlePlaceOrder() {
-    alert("Order placed successfully! Thank you for your purchase.");
+    // Add order to orders context
+    addOrder(cart, products);
+
+    // Clear the cart
+    clearCart();
+
+    // Navigate to orders page
+    navigate("/orders");
   }
 
   return (

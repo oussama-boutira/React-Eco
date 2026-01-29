@@ -20,3 +20,16 @@
   grid-template-columns: 1fr;
   row-gap: 50px;
 }
+
+.orders-page .no-orders {
+  text-align: center;
+  padding: 60px 20px;
+  color: rgb(100, 100, 100);
+  font-size: 18px;
+}
+
+.orders-page .no-orders a {
+  display: inline-block;
+  margin-top: 15px;
+  font-size: 16px;
+}

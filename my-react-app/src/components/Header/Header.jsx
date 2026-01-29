@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useCart } from "../../context/CartContext";
+import { useSearch } from "../../context/SearchContext";
 import "./Header.css";
 
 import logoWhite from "../../assets/images/logo-white.png";
@@ -9,7 +10,17 @@ import cartIcon from "../../assets/images/icons/cart-icon.png";
 
 function Header() {
   const { getCartQuantity } = useCart();
+  const { searchQuery, setSearchQuery } = useSearch();
   const cartQuantity = getCartQuantity();
+
+  function handleSearch(e) {
+    e.preventDefault();
+    // Search is already applied in real-time via searchQuery state
+  }
+
+  function handleInputChange(e) {
+    setSearchQuery(e.target.value);
+  }
 
   return (
     <header className="header">
@@ -24,12 +35,19 @@ function Header() {
         </Link>
       </div>
 
-      <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="Search" />
-        <button className="search-button">
+      <form className="middle-section" onSubmit={handleSearch}>
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search products..."
+          value={searchQuery}
+          onChange={handleInputChange}
+          aria-label="Search products"
+        />
+        <button className="search-button" type="submit">
           <img className="search-icon" src={searchIcon} alt="Search" />
         </button>
-      </div>
+      </form>
 
       <div className="right-section">
         <Link className="orders-link header-link" to="/orders">
